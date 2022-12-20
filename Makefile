@@ -1,8 +1,8 @@
 
-set_url: ## git remote set-url origin git@github.com:login/repo.git
+set-url: ## git remote set-url origin git@github.com:login/repo.git
 	git remote set-url origin git@github.com:teratron/procedural-planet.git
 
-message = Init godot project
+message = Lesson #1.
 branch = master
 add-commit-push: ## add commit push
 	git add .

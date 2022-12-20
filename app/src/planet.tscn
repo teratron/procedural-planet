@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciqfwvg2p6601"]
+
+[ext_resource type="Script" path="res://src/Planet.gd" id="1_qovsj"]
+[ext_resource type="Script" path="res://src/PlanetMeshFace.gd" id="2_j7cew"]
+
+[node name="Planet" type="Node3D"]
+script = ExtResource("1_qovsj")
+
+[node name="Up" type="MeshInstance3D" parent="."]
+script = ExtResource("2_j7cew")
+normal = Vector3(0, 1, 0)
+
+[node name="Down" type="MeshInstance3D" parent="."]
+script = ExtResource("2_j7cew")
+normal = Vector3(0, -1, 0)
+
+[node name="Left" type="MeshInstance3D" parent="."]
+script = ExtResource("2_j7cew")
+normal = Vector3(-1, 0, 0)
+
+[node name="Right" type="MeshInstance3D" parent="."]
+script = ExtResource("2_j7cew")
+normal = Vector3(1, 0, 0)
+
+[node name="Front" type="MeshInstance3D" parent="."]
+script = ExtResource("2_j7cew")
+normal = Vector3(0, 0, -1)
+
+[node name="Back" type="MeshInstance3D" parent="."]
+script = ExtResource("2_j7cew")
+normal = Vector3(0, 0, 1)

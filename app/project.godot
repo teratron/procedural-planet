@@ -8,8 +8,25 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "Node3D",
+"class": &"PlanetData",
+"language": &"GDScript",
+"path": "res://src/Planet.gd"
+}, {
+"base": "MeshInstance3D",
+"class": &"PlanetMeshFace",
+"language": &"GDScript",
+"path": "res://src/PlanetMeshFace.gd"
+}]
+_global_script_class_icons={
+"PlanetData": "",
+"PlanetMeshFace": ""
+}
+
 [application]
 
 config/name="Procedural Planet Generation"
+run/main_scene="res://src/planet.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://assets/icon.svg"
