@@ -1,4 +1,6 @@
-class_name PlanetMeshFace extends MeshInstance3D
+tools
+extends MeshInstance3D
+class_name PlanetMeshFace
 
 
 @export var normal: Vector3
@@ -9,8 +11,8 @@ func regenerate_mesh(planet_data: PlanetData):
 	arrays.resize(Mesh.ARRAY_MAX)
 	
 	var vertex_array := PackedVector3Array()
-	var uv_array := PackedVector2Array()
 	var normal_array := PackedVector3Array()
+	var uv_array := PackedVector2Array()
 	var index_array := PackedInt32Array()
 	
 	var resolution := planet_data.resolution  # делим грань на resolution частей

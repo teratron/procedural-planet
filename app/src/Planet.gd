@@ -1,4 +1,5 @@
-class_name PlanetData extends Node3D
+extends Node3D
+class_name PlanetData
 
 
 @export var resolution: int = 5
