@@ -2,7 +2,7 @@
 set-url: ## git remote set-url origin git@github.com:login/repo.git
 	git remote set-url origin git@github.com:teratron/procedural-planet.git
 
-message = Lesson #1.
+message = Lesson #2
 branch = master
 add-commit-push: ## add commit push
 	git add .

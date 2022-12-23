@@ -1,13 +1,11 @@
+@tool
 extends Node3D
-class_name PlanetData
 
 
-@export var resolution: int = 5
+@export var planet_data: Resource
 
 
 func _ready():
-	pass
-
-
-func _process(_delta):
-	pass
+	for child in get_children():
+		var face := child as PlanetMeshFace
+		face.regenerate_mesh(planet_data)
