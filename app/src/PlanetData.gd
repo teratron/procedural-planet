@@ -3,15 +3,17 @@ extends Resource
 class_name PlanetData
 
 
-@export var radius: float = 1
-@export var resolution: int = 5
+@export var radius: float = 1:
+	get:
+		return radius
+	set(value):
+		changed.emit(value)
+		radius = value
 
 
-func set_radius(value):
-	radius = value
-	emit_signal("changed")
-
-
-func set_resolution(value):
-	resolution = value
-	emit_signal("changed")
+@export var resolution: int = 5:
+	get:
+		return resolution
+	set(value):
+		changed.emit(value)
+		resolution = value

@@ -8,7 +8,7 @@ metadata/_edit_group_ = true
 [node name="Planet" parent="." instance=ExtResource("1_rp3dh")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.970901, -0.0667413, 0.229995, 0, 0.960381, 0.278689, -0.239483, -0.27058, 0.932435, 2.28272, 0.692731, 4.5356)
+transform = Transform3D(0.908632, -0.11638, 0.401053, 1.93253e-09, 0.960381, 0.27869, -0.417598, -0.253226, 0.872633, 2.28272, 0.692731, 4.5356)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.99294, 1.18876)
