@@ -3,7 +3,7 @@ extends Resource
 class_name PlanetData
 
 
-@export var radius: float = 5
+@export var radius: float = 1
 @export var resolution: int = 5
 
 

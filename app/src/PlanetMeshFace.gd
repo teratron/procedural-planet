@@ -7,7 +7,6 @@ class_name PlanetMeshFace
 
 
 func regenerate_mesh(planet_data: PlanetData):
-#func regenerate_mesh():
 	var arrays: Array = []
 	arrays.resize(Mesh.ARRAY_MAX)
 	
@@ -35,7 +34,7 @@ func regenerate_mesh(planet_data: PlanetData):
 			var i: int = x + y * resolution
 			var percent := Vector2(x, y) / last_index
 			var point_on_unit_cube: Vector3 = normal + ((percent.x - 0.5) * axisA + (percent.y - 0.5) * axisB) * 2
-			var point_on_unit_sphere := point_on_unit_cube.normalized() #* planet_data.radius
+			var point_on_unit_sphere := point_on_unit_cube.normalized() * planet_data.radius
 			vertex_array[i] = point_on_unit_sphere
 			
 			if x != last_index and y != last_index:
@@ -55,11 +54,6 @@ func regenerate_mesh(planet_data: PlanetData):
 		var bc: Vector3 = vertex_array[index_array[c]] - vertex_array[index_array[b]]
 		var ca: Vector3 = vertex_array[index_array[a]] - vertex_array[index_array[c]]
 		
-#		var cross_ab_bc: Vector3 = ab.cross(bc) * -1.0
-#		var cross_bc_ca: Vector3 = bc.cross(ca) * -1.0
-#		var cross_ca_ab: Vector3 = ca.cross(ab) * -1.0
-#		var cross_all: Vector3 = cross_ab_bc + cross_bc_ca + cross_ca_ab
-		
 		var cross_all: Vector3 = (ab.cross(bc) + bc.cross(ca) + ca.cross(ab)) * -1.0
 		normal_array[index_array[a]] += cross_all
 		normal_array[index_array[b]] += cross_all
@@ -73,15 +67,14 @@ func regenerate_mesh(planet_data: PlanetData):
 	arrays[Mesh.ARRAY_TEX_UV] = uv_array
 	arrays[Mesh.ARRAY_INDEX] = index_array
 	
-	#call_deferred("_update_mesh", arrays, planet_data)
-	call_deferred("_update_mesh", arrays)
+	call_deferred("_update_mesh", arrays, planet_data)
 
 
-#func _update_mesh(arrays: Array, planet_data: PlanetData):
-func _update_mesh(arrays: Array):
+func _update_mesh(arrays: Array, planet_data: PlanetData):
 	var _mesh := ArrayMesh.new()
 	_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 	self.mesh = _mesh
+	print(planet_data)
 	
 #	material_override.set_shader_param("min_height", planet_data.min_height)
 #	material_override.set_shader_param("max_height", planet_data.max_height)
