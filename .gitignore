@@ -3,11 +3,12 @@
 .godot/
 
 # Godot-specific ignores
-addons/
 .import/
 *.import
 export.cfg
 export_presets.cfg
+addons/
+!/app/addons/README.md
 
 # Mono-specific ignores
 .mono/
