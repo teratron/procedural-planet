@@ -3,6 +3,7 @@
 .godot/
 
 # Godot-specific ignores
+addons/
 .import/
 *.import
 export.cfg
