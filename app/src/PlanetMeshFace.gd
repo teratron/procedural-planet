@@ -70,11 +70,11 @@ func regenerate_mesh(planet_data: PlanetData):
 	call_deferred("_update_mesh", arrays, planet_data)
 
 
-func _update_mesh(arrays: Array, planet_data: PlanetData):
+func _update_mesh(arrays: Array, _planet_data: PlanetData):
 	var _mesh := ArrayMesh.new()
 	_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 	self.mesh = _mesh
-	print(planet_data)
+	#print(planet_data)
 	
 #	material_override.set_shader_param("min_height", planet_data.min_height)
 #	material_override.set_shader_param("max_height", planet_data.max_height)
