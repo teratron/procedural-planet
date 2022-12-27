@@ -7,11 +7,13 @@ class_name PlanetData
 	get:
 		return radius
 	set(value):
+		if value <= 0:
+			value = 0.1
 		changed.emit(value)
 		radius = value
 
 
-@export_range(2, 50, 1) var resolution: int = 5:
+@export_range(1, 50) var resolution: int = 5:
 	get:
 		return resolution
 	set(value):

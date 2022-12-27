@@ -15,10 +15,10 @@ func regenerate_mesh(planet_data: PlanetData):
 	var uv_array := PackedVector2Array()
 	var index_array := PackedInt32Array()
 	
-	var resolution := planet_data.resolution  # делим грань на resolution частей
-	var last_index: int = resolution - 1
-	var num_vertices: int = resolution ** 2
-	var num_indices: int = last_index ** 2 * 6
+	var resolution := planet_data.resolution
+	var num_edges: int = resolution + 1
+	var num_vertices: int = num_edges ** 2
+	var num_indices: int = resolution ** 2 * 6
 	
 	vertex_array.resize(num_vertices)
 	normal_array.resize(num_vertices)
@@ -29,17 +29,18 @@ func regenerate_mesh(planet_data: PlanetData):
 	var axisA := Vector3(normal.y, normal.z, normal.x)
 	var axisB: Vector3 = normal.cross(axisA)
 	
-	for y in range(resolution):
-		for x in range(resolution):
-			var i: int = x + y * resolution
-			var percent := Vector2(x, y) / last_index
+	for y in range(num_edges):
+		var j: int = y * num_edges
+		for x in range(num_edges):
+			var i: int = x + j
+			var percent := Vector2(x, y) / resolution
 			var point_on_unit_cube: Vector3 = normal + ((percent.x - 0.5) * axisA + (percent.y - 0.5) * axisB) * 2
 			#vertex_array[i] = point_on_unit_cube
 			var point_on_unit_sphere := point_on_unit_cube.normalized() * planet_data.radius
 			vertex_array[i] = point_on_unit_sphere
 			
-			if x != last_index and y != last_index:
-				index_array[tri_index] = i + resolution
+			if x < resolution and y < resolution:
+				index_array[tri_index] = i + num_edges
 				index_array[tri_index + 1] = index_array[tri_index] + 1
 				index_array[tri_index + 2] = i
 				index_array[tri_index + 3] = index_array[tri_index + 1]
@@ -47,7 +48,7 @@ func regenerate_mesh(planet_data: PlanetData):
 				index_array[tri_index + 5] = i
 				tri_index += 6
 	
-	for a in range(0, index_array.size(), 3):
+	for a in range(0, num_indices, 3):
 		var b: int = a + 1
 		var c: int = a + 2
 		
