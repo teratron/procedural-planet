@@ -11,7 +11,7 @@ class_name PlanetData
 		radius = value
 
 
-@export var resolution: int = 5:
+@export_range(2, 50, 1) var resolution: int = 5:
 	get:
 		return resolution
 	set(value):

@@ -34,6 +34,7 @@ func regenerate_mesh(planet_data: PlanetData):
 			var i: int = x + y * resolution
 			var percent := Vector2(x, y) / last_index
 			var point_on_unit_cube: Vector3 = normal + ((percent.x - 0.5) * axisA + (percent.y - 0.5) * axisB) * 2
+			#vertex_array[i] = point_on_unit_cube
 			var point_on_unit_sphere := point_on_unit_cube.normalized() * planet_data.radius
 			vertex_array[i] = point_on_unit_sphere
 			
